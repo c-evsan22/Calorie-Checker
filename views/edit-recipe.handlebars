@@ -1,0 +1,72 @@
+<h1>Edit Recipe</h1>
+<p>Click on a field to edit and press enter to update!</p>
+
+<div id="recipedetails">
+
+    recipe title: 
+    <p class="field">
+        <span class="title">{{recipe.0.title}}</span>
+        <input type='text' class='edit' style='display: none;'>
+    </p>
+    image link: 
+    <p class="field">
+        <span class="image">{{recipe.0.image}}</span>
+        <input type='url' class='edit' style='display: none;'>
+    </p>
+
+    ingredients: 
+    <br>
+    <table>
+        <th>ID</th>
+        <th>QUANTITY</th>
+        <th>MEASURE</th>
+        <th>NAME</th>
+        <th>PRICE</th>
+        {{#each recipe}}
+        <tr class="ingredients" id="{{ingredient_id}}">
+            <td>
+                <p class="field">
+                    <span class="id">{{ingredient_id}}</span>
+                    <input type='text' class='edit' style='display: none;'>
+                </p>
+            </td>
+            <td>
+                <p class="field">
+                    <span class="quantity">{{ingredient_quantity}}</span>
+                    <input type='text' class='edit' style='display: none;'>
+                </p>
+            </td>
+            <td>
+                <p class="field">
+                    <span class="measure">{{ingredient_measure}}</span>
+                    <input type='text' class='edit' style='display: none;'>
+                </p>
+            </td>
+            <td>
+                <p class="field">
+                    <span class="name">{{ingredient_name}}</span>
+                    <input type='text' class='edit' style='display: none;'>
+                </p>
+            </td>
+            <td>
+                <p class="field">
+                    <span class="price">{{ingredient_price}}</span>
+                    <input type='text' class='edit' style='display: none;'>
+                </p>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+    <p>(Make sure the NAME of the ingredient is changed to be updated)</p>
+
+    method: 
+    <br>
+    <p class="field">
+        <span class="method">{{recipe.0.method}}</span>
+        <input type='text' class='edit' style='display: none;'>
+    </p>
+    <p>(Please place &ltli&gt&lt/li&gt around every method step!)</p>
+
+<button id="submit-update">submit update</button>
+
+<script type="text/javascript" src="/js/edit-recipe.js"></script>
