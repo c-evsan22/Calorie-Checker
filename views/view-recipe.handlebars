@@ -1,0 +1,108 @@
+<div id="view-recipe-page">
+
+    <div id="details">
+        <h1>{{recipe.0.title}}</h1>
+
+        <div id="top-extras">
+            <p class="price">Price: ${{recipePrice.0.price}}</p>
+
+            <div>
+                {{#if averageRating.0.rating}}
+                <p class="rating">Rating: <span class="recipe-rating">{{averageRating.0.rating}}</span></p>
+                {{else}}
+                <p class="rating">Rating: This recipe has not been rated yet</p>
+                {{/if}}
+            </div>
+            
+            <div class="submit-rating">
+                {{#if rated_before}}
+                <p>Rate Recipe: You have rated this recipe</p>
+                {{else if logged_user_id}}
+                <form method="post" action="/api/rate-recipe/{{recipe.0.id}}/{{logged_user_id}}">
+                    <label for="rating">Rate Recipe</label>
+                    <select name="rating" id="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <input type="submit" value="Submit">
+                </form>
+                {{else}}
+                <p>Rate Recipe: You must be logged in to rate this recipe</p>
+                {{/if}}
+            </div>
+            
+
+            <div class="add-to-favourites">
+                {{#if favouritesData}}
+                <p>This recipe is in your favourites</p>
+                {{else if logged_user_id}}
+                <form method="post" action="/api/add-favourite/{{recipe.0.id}}/{{logged_user_id}}">
+                    <input type="submit" value="Add to favourites">
+                </form>
+                {{/if}}
+            </div>
+        </div>
+
+        <img src="{{recipe.0.image}}" alt="placeholder-image">
+        <p>Created by {{chef.0.username}}</p>
+
+        <h2>Ingredients</h2>
+        <table>
+            {{#each ingredientsData}}
+            <tr>
+                <td class="quantity">{{quantity}} {{measure_metric}}(s)</td>
+                <td class="item-name">{{item}}</td>
+                <td>${{price}}</td>
+            </tr>
+            {{/each}}
+        </table>
+
+        <h2>Method</h2>
+        <ol>
+            {{{recipe.0.method}}}
+        </ol>
+    </div>
+    {{!-- Comments Section --}}
+
+    <section id="comments-section">
+
+        <h2>Comments</h2>
+
+        <ul style="list-style-type:none;">
+            <hr>
+            {{#each comments}}
+            <li class="comment">
+                <label>{{username}}</label>
+                <br>
+                {{#if rating}}
+                <label>Rating: <span class="recipe-rating">{{rating}}</span></label>
+                {{else}}
+                <label>Rating: User has not rated</label>
+                {{/if}}
+                <p>{{comment}}</p>
+            </li>
+            <hr>
+            {{/each}}
+            {{#if logged_user_id}}
+            {{!-- Add new comment --}}
+            <li>
+                <form method="post" action="/api/add-comment/{{recipe.0.id}}/{{logged_user_id}}">
+                    <label for="comment">Add Comment</label>
+                    <br>
+                    <textarea name="comment" id="comment" cols="30" rows="2"></textarea>
+                    <br>
+                    <input type="submit" value="Submit">
+                </form>
+            </li>
+            {{else}}
+            <li>You must be logged in to comment</li>
+            {{/if}}
+        </ul>
+    </section>
+
+</div>
+
+<script type="text/javascript" src="/js/view-recipe.js"></script>
