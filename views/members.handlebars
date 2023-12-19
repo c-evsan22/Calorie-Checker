@@ -1,0 +1,40 @@
+<div id="membersWrapper" class="container">
+    <div class="row">
+        <div id="user-recipes" class="col-md">
+            <h1><strong>My Recipes</strong></h1>
+            <div>
+                <table>
+                    {{#each recipes}}
+                    <tr>
+                        <td><a class="userrecipetitle" href="/view-recipe/{{id}}">{{title}}</a></td>
+                        <td><button id="{{id}}" class="edit-recipe">edit</button></td>
+                        <td><button id="{{id}}" class="delete-recipe">delete</button></td>
+                    </tr>
+                    {{/each}}
+                </table>
+
+            </div>
+        </div>
+        <div id="saved-recipes" class="col-md">
+            <h1><strong> Saved Recipes</strong></h1>
+            <section>
+                {{#if savedRecipes}}
+                <ul>
+                    {{#each savedRecipes}}
+                    <li>
+                        <a href="/view-recipe/{{recipe_id}}">{{title}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+                {{else}}
+                You have no saved recipes
+                {{/if}}
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript" src="/js/members.js"></script>
