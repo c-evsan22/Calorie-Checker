@@ -1,0 +1,18 @@
+<main class="budgetsearchmain">
+
+    <form class="budgetform" id="budget-form" method="post" action="/view-recipes/less-than">
+        <label for="price"
+            style="color: rgb(255, 255, 255); font-size: 40px; font-weight: bold; filter:brightness(120%)">How much
+            would you like to
+            spend?</label>
+        <br>
+        <input type="text" class="priceinput" id="budget-input" name="price">
+        <br>
+        <input class="submitbutton" type="submit" value="Submit">
+    </form>
+
+    {{#if noData}}
+    <label>No Recipes found, please try again</label>
+    {{/if}}
+
+</main>
