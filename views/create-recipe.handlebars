@@ -1,0 +1,117 @@
+<div class="createRecipeWrapper">
+    <div id="create-recipe">
+        <h1 id="createRecipeTitle"> CREATE A RECIPE</h1>
+        <form id="recipeForm">
+
+            {{!-- input title --}}
+
+            <h4>Recipe name</h4>
+            <input id="recipe-name" name="recipe-name" type="text" placeholder="recipe title" />
+            <button id="add-recipe-name">ADD</button><br><br>
+
+
+
+
+            {{!-- input image link --}}
+            <h4>Display image link</h4>
+            <input id="recipe-image" name="recipe-image" type="text" placeholder="leave blank for default image" />
+            <button id="add-recipe-image">ADD</button><br><br>
+
+            {{!-- search for ingredients --}}
+            <h4>Ingredients</h4>
+            <div id="auto-fill">
+                <h5>Search for ingredient</h5>
+                <input id="recipe-item" name="recipe-item" type="search" placeholder="ingredient" />
+                <button id="ingredient-search">search</button><br><br>
+
+                {{!-- search ingredients results --}}
+                <div class="ingredient-results">
+                    <h2>RESULTS</h2>
+                    <div class="result-items"></div>
+                </div>
+
+                {{!-- user's single chosen ingredient --}}
+                <table>
+                    <th></th> {{!-- id --}}
+                    <th>Quantity</th>
+                    <th>Measure</th>
+                    <th>Name</th>
+                    <th>Average unit price</th>
+                    <!-- this table is filled automatically except for quantity and measure -->
+                    <tr>
+                        <td id="ingredient-id"></td>
+                        <td>
+                            <input id="ingredient-quantity" name="ingredient-quantity" type="text"
+                                placeholder="quantity" />
+                        </td>
+                        <td>
+                            <select name="measures" id="ingredient-measures" class="ingredient-measures"></select>
+                        </td>
+                        <td id="ingredient-name"></td>
+                        <td>$<span id="ingredient-price"></span></td>
+                    </tr>
+                </table>
+                <button id="add-ingredient">ADD</button><br>
+            </div>
+
+            <div id="manual-fill">
+                <table class="manual-ingredients">
+                    <th>Quantity</th>
+                    <th>Measure</th>
+                    <th>Name</th>
+                    <th>Average unit price $</th>
+                    <tr>
+                        <td>
+                            <input id="manual-quantity" name="manual-quantity" type="text" placeholder="quantity" />
+                        </td>
+                        <td>
+                            <select name="measures" class="ingredient-measures" id="manual-measures"></select>
+                        </td>
+                        <td>
+                            <input id="manual-name" name="manual-name" type="text" placeholder="item name" />
+                        </td>
+                        <td>
+                            <label for="manual-price"><input id="manual-price" name="manual-price" type="text"
+                                    placeholder="price" /></label>
+                        </td>
+                    </tr>
+                </table>
+                <button id="add-manual">ADD</button><br>
+            </div>
+
+            <!-- show if manually adding ingredients -->
+            <a class="toggle-manually">add ingredient toggle (manual/auto)</a>
+
+            {{!-- add method steps --}}
+            <h4>Method</h4>
+            <textarea id="recipe-method" name="recipe-method" placeholder="method step"></textarea><br>
+            <button id="add-method-step">add another step</button><br>
+        </form>
+    </div>
+
+    {{!-- --------------------------------------------- --}}
+
+    {{!-- PREVIEW OF USER RECIPE --}}
+    <div id="preview-content">
+        <h1 id="previewRecipeTitle">PREVIEW RECIPE</h1>
+        <div id="preview-recipe">
+            <h1 class="title">Recipe Title</h1>
+            <img src="https://picsum.photos/450/250" alt="image" class="image"><br>
+            <p>created by <span class="author">Chef's Name</span></p>
+
+            <h2>Ingredients</h2>
+            <table class="ingredients">
+                <th>Quantity</th>
+                <th>Measure</th>
+                <th>Name</th>
+                <th>Average unit price</th>
+            </table>
+
+            <h2>Method</h2>
+            <ol class="method"></ol>
+            <button type="submit" id="submit-recipe">submit recipe</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/create-recipe.js"></script>
