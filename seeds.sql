@@ -1,6 +1,6 @@
--- CREATE DATABASE meal_budgeter;
+CREATE DATABASE calorie_checker;
 
-USE meal_budgeter;
+USE calorie_checker;
 
 -- User Sid
 INSERT INTO users (username, password, createdAt, updatedAt) 
